@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn sucrase-node index"
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^2.0.0",
@@ -13,6 +15,7 @@
     "@tensorflow/tfjs-node-gpu": "^2.0.0",
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
     "socket.io": "^2.3.0",
     "sucrase": "^3.15.0"
   },
