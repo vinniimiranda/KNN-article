@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "yarn sucrase-node index"
+  },
   "dependencies": {
     "@tensorflow/tfjs": "^2.0.0",
     "@tensorflow/tfjs-core": "^2.0.0",
