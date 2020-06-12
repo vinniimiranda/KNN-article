@@ -2,14 +2,15 @@ import * as tf from '@tensorflow/tfjs';
 import express from 'express';
 import * as http from 'http';
 import socket from 'socket.io';
+import { resolve } from 'path';
 
 import Knex from './Knex';
 
 const app = express();
 const httpServer = http.createServer(app);
 const io = socket(httpServer);
-import { resolve } from 'path';
 
+const PORT = process.env.PORT || 3000;
 let data = [];
 
 function getDataFromDatabse() {
@@ -33,8 +34,8 @@ io.on('connection', (socket) => {
   });
 });
 
-httpServer.listen(3000, () => {
-  console.log('listening on *:3000');
+httpServer.listen(PORT, () => {
+  console.log(`listening on *:${PORT}`);
 });
 
 async function KNN(guessValue) {
