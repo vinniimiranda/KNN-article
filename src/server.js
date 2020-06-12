@@ -8,6 +8,7 @@ import Knex from './Knex';
 const app = express();
 const httpServer = http.createServer(app);
 const io = socket(httpServer);
+import { resolve } from 'path';
 
 let data = [];
 
@@ -16,6 +17,10 @@ function getDataFromDatabse() {
     .table('info')
     .then((res) => (data = res));
 }
+
+app.get('/', (req, res) => {
+  res.sendFile(resolve(__dirname, '..', 'public', 'index.html'));
+});
 
 io.on('connection', (socket) => {
   console.log(`New connection, id: ${socket.id}`);
